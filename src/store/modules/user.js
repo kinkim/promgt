@@ -61,14 +61,14 @@ const actions = {
         }
 
         // const { roles, name, avatar, introduction } = data
-        const { authorities, username, password, accountNonExpired } = data
+        const { roles, username, password, accountNonExpired } = data
 
         // roles must be a non-empty array
-        if (!authorities || authorities.length <= 0) {
+        if (!roles || roles.length <= 0) {
           reject('getInfo: roles must be a non-null array!')
         }
 
-        commit('SET_ROLES', authorities)
+        commit('SET_ROLES', roles)
         commit('SET_NAME', username)
         commit('SET_AVATAR', password)
         commit('SET_INTRODUCTION', accountNonExpired)
