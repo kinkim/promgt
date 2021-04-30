@@ -1,4 +1,5 @@
 import { asyncRoutes, constantRoutes } from '@/router'
+// KINKIM_REFACTOR
 import Layout from '@/layout'
 /**
  * Use meta.role to determine if the current user has permission
@@ -60,11 +61,13 @@ const actions = {
       accessedRoutes = JSON.parse(window.localStorage.getItem('routerslist'))
       accessedRoutes = filterAsyncRouter(accessedRoutes)
       debugger
+      // KINKIM_REFACTOR
       commit('SET_ROUTES', accessedRoutes)
       resolve(accessedRoutes)
     })
   }
 }
+// KINKIM_REFACTOR
 export const filterAsyncRouter = (routers, isRewrite = false) => { // 遍历后台传来的路由字符串，转换为组件对象
   return routers.filter(router => {
     if (router.component) {

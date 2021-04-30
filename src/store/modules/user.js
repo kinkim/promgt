@@ -34,6 +34,7 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
+        // KINKIM_REFACTOR
         // const { data } = response
         const token = response.token
         // commit('SET_TOKEN', data.token)
@@ -47,6 +48,7 @@ const actions = {
   },
 
   // get user info
+  // KINKIM_REFACTOR
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
