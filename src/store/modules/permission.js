@@ -1,5 +1,5 @@
 import { asyncRoutes, constantRoutes } from '@/router'
-
+import Layout from '@/layout'
 /**
  * Use meta.role to determine if the current user has permission
  * @param roles
@@ -55,10 +55,34 @@ const actions = {
       } else {
         accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
       }
+      debugger
+      // KINKIM_REFACTOR
+      accessedRoutes = JSON.parse(window.localStorage.getItem('routerslist'))
+      accessedRoutes = filterAsyncRouter(accessedRoutes)
+      debugger
       commit('SET_ROUTES', accessedRoutes)
       resolve(accessedRoutes)
     })
   }
+}
+export const filterAsyncRouter = (routers, isRewrite = false) => { // 遍历后台传来的路由字符串，转换为组件对象
+  return routers.filter(router => {
+    if (router.component) {
+      if (router.component === 'Layout') { // Layout组件特殊处理
+        router.component = Layout
+      } else {
+        const component = router.component
+        router.component = loadView(component)
+      }
+    }
+    if (router.children && router.children.length) {
+      router.children = filterAsyncRouter(router.children, router, isRewrite)
+    }
+    return true
+  })
+}
+export const loadView = (view) => {
+  return (resolve) => require([`@/views/${view}`], resolve)
 }
 
 export default {

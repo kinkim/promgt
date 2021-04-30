@@ -53,6 +53,8 @@ const actions = {
         debugger
         // const { data } = response
         const data = response
+        // KINKIM_REFACTOR
+        localStorage.setItem('routerslist', JSON.stringify(response.vo))
         // authorities
         // username
 
