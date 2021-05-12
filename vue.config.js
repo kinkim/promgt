@@ -24,7 +24,8 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
+  // KINKIM_REFACTOR ADD publicPath
+  publicPath: '/kk-admin',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -37,6 +38,7 @@ module.exports = {
       errors: true
     }
     // KINKIM_REFACTOR_REMOVE MOCK
+
     // before: require('./mock/mock-server.js')
     // proxy: {
     //   [process.env.VUE_APP_BASE_API]: {
