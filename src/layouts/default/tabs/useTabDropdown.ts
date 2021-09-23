@@ -34,21 +34,18 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
     const { meta } = unref(getTargetTab);
     const { path } = unref(currentRoute);
 
-    const curItem = state.current;
-
-    const isCurItem = curItem ? curItem.path === path : false;
-
     // Refresh button
+    const curItem = state.current;
     const index = state.currentIndex;
-    const refreshDisabled = !isCurItem;
+    const refreshDisabled = curItem ? curItem.path !== path : true;
     // Close left
-    const closeLeftDisabled = index === 0 || !isCurItem;
+    const closeLeftDisabled = index === 0;
 
     const disabled = tabStore.getTabList.length === 1;
 
     // Close right
     const closeRightDisabled =
-      !isCurItem || (index === tabStore.getTabList.length - 1 && tabStore.getLastDragEndIndex >= 0);
+      index === tabStore.getTabList.length - 1 && tabStore.getLastDragEndIndex >= 0;
     const dropMenuList: DropMenu[] = [
       {
         icon: 'ion:reload-sharp',
@@ -81,7 +78,7 @@ export function useTabDropdown(tabContentProps: TabContentProps, getIsTabs: Comp
         icon: 'dashicons:align-center',
         event: MenuEventEnum.CLOSE_OTHER,
         text: t('layout.multipleTab.closeOther'),
-        disabled: disabled || !isCurItem,
+        disabled: disabled,
       },
       {
         icon: 'clarity:minus-line',
