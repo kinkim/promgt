@@ -1,4 +1,4 @@
-name: schedule-push-to-ftp
+# name: schedule-push-to-ftp
 # Timed deployment project
 # on:
 #   push:
