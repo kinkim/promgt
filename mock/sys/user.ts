@@ -45,6 +45,7 @@ const fakeCodeList: any = {
 };
 export default [
   // mock user login
+  // KK_REFACTOR useApi
   {
     url: '/basic-api/login',
     timeout: 200,

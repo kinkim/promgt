@@ -8,7 +8,7 @@
   //===========================================
   "explorer.openEditors.visible": 0,
   "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "diffEditor.ignoreTrimWhitespace": false,
   //===========================================
   //============= Other =======================
@@ -70,7 +70,8 @@
   "stylelint.enable": true,
   "stylelint.packageManager": "yarn",
   "liveServer.settings.donotShowInfoMsg": true,
-  "telemetry.enableCrashReporter": false,
+  // "telemetry.enableCrashReporter": false,
+  "telemetry.telemetryLevel": "error",
   "workbench.settings.enableNaturalLanguageSearch": false,
   "path-intellisense.mappings": {
     "/@/": "${workspaceRoot}/src"
@@ -78,11 +79,12 @@
   "prettier.requireConfig": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.sideBar.location": "left",
+
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -100,7 +102,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": true
+    }
+    // "editor.defaultFormatter": ""
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -108,7 +115,8 @@
   "[vue]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": false
-    }
+    },
+    "editor.defaultFormatter": "octref.vetur"
   },
   "i18n-ally.localesPaths": ["src/locales/lang"],
   "i18n-ally.keystyle": "nested",
@@ -151,5 +159,8 @@
     "brotli",
     "tailwindcss",
     "sider"
-  ]
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }
